@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>UNDERTALE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;height:100%;background:#000;color:#fff;font-family:'Determination Mono','DTM-Mono','DotGothic16','Courier New',monospace;-webkit-font-smoothing:none;text-rendering:optimizeSpeed}
+  main{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;text-align:center}
+  h1{font-size:52px;letter-spacing:12px;margin:0;font-weight:400;text-transform:uppercase;padding-left:12px}
+  #heart{width:72px;height:64px;image-rendering:pixelated;animation:bob 1.2s steps(2) infinite}
+  @keyframes bob{50%{transform:translateY(-6px)}}
+  #play{position:relative;background:#000;color:#ff7f27;border:5px solid #ff7f27;padding:10px 46px 10px 64px;font:400 30px/1 'Determination Mono','DTM-Mono','DotGothic16','Courier New',monospace;cursor:pointer;letter-spacing:5px;text-transform:uppercase}
+  #play .h{position:absolute;left:18px;top:50%;width:26px;height:23px;margin-top:-11px;visibility:hidden}
+  #play:hover,#play:focus{color:#ff0;border-color:#ff0;outline:none}
+  #play:hover .h,#play:focus .h{visibility:visible}
+  #msg{max-width:520px;font-size:15px;color:#aaa;min-height:20px;padding:0 16px}
+  small{color:#888;font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <svg id="heart" viewBox="0 0 9 8" shape-rendering="crispEdges" fill="#f00" aria-hidden="true"><rect x="1" y="0" width="1" height="1"/><rect x="2" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="7" y="0" width="1" height="1"/><rect x="0" y="1" width="1" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="3" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="0" y="2" width="1" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="7" y="2" width="1" height="1"/><rect x="8" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="1" y="3" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="7" y="3" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="7" y="4" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="5" y="6" width="1" height="1"/><rect x="4" y="7" width="1" height="1"/></svg>
+  <h1>UNDERTALE</h1>
+  <button id="play"><svg class="h" viewBox="0 0 9 8" shape-rendering="crispEdges" fill="#f00" aria-hidden="true"><rect x="1" y="0" width="1" height="1"/><rect x="2" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="7" y="0" width="1" height="1"/><rect x="0" y="1" width="1" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="3" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="0" y="2" width="1" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="7" y="2" width="1" height="1"/><rect x="8" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="1" y="3" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="7" y="3" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="7" y="4" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="5" y="6" width="1" height="1"/><rect x="4" y="7" width="1" height="1"/></svg>Play</button>
+  <div id="msg"></div>
+  <small>* click PLAY or press Z</small>
+  
+</main>
+
+<script>
+/* ---------- settings you may want to change ---------- */
+const SETTINGS = {
+  // Where the in-browser game runtime lives (an HTML page that runs the game).
+  runtimeUrl: './game/index.html',
+  // localStorage key the shell keeps your save (file0) under.
+  saveKey: 'ut_file0',
+  // true  = open the game in a new about:blank window
+  // false = run the game in this same tab (temporary default while testing)
+  openInAboutBlank: false
+};
+/* default save = the file0 from your upload (used until you save from the admin menu) */
+const DEFAULT_FILE0_B64 = "Rm9pbGVkDQoxOQ0KOTINCjIwDQo0Ng0KOTkNCjE0DQo5OQ0KNA0KNTAwMDANCjANCjANCjExDQoyMDYNCjYxDQowDQo0Mw0KMA0KNDMNCjANCjQzDQowDQoxNg0KMA0KMTYNCjANCjE2DQowDQo1Mg0KNTMNCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjQNCjANCjANCjANCjANCjANCjANCjENCjENCjENCjANCjANCjINCjANCjANCjANCjANCjANCjANCjANCjANCjANCjENCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjENCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjEwOQ0KMjENCjE3DQoyMQ0KNDQNCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjENCjENCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjENCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjENCjANCjANCjANCjANCjENCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjENCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjANCjE5OQ0KMQ0KMQ0KMQ0KMA0KMjMxDQowDQo=";
+
+function b64ToText(b64){
+  const bin = atob(b64), bytes = new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+  return new TextDecoder('utf-8').decode(bytes);
+}
+
+const msg = document.getElementById('msg');
+if(location.protocol === 'file:'){
+  msg.textContent = 'Tip: open this through a web server (e.g. "python -m http.server") so the new window can load the game files.';
+}
+
+function launch(){
+  try{
+    const cfg = {
+      runtimeUrl: new URL(SETTINGS.runtimeUrl, location.href).href,
+      saveKey: SETTINGS.saveKey,
+      defaultFile0: b64ToText(DEFAULT_FILE0_B64)
+    };
+    const json = JSON.stringify(cfg).replace(/</g,'\\u003c');
+    const shell = document.getElementById('shell-src').textContent
+      .replace(/<\\\/script>/g,'</'+'script>')
+      .replace('/*__CONFIG__*/null', () => json);
+
+    if(SETTINGS.openInAboutBlank){
+      const w = window.open('about:blank','_blank');
+      if(w){ w.document.open(); w.document.write(shell); w.document.close(); return; }
+      msg.textContent = 'Popup was blocked - running in this page instead.';
+    }
+    if(document.getElementById('gameframe')) return;
+    const f = document.createElement('iframe');
+    f.id = 'gameframe';
+    f.allow = 'autoplay; fullscreen; gamepad';
+    f.setAttribute('allowfullscreen','');
+    f.style.cssText = 'position:fixed;left:0;top:0;width:100%;height:100%;border:0;background:#000;z-index:99999';
+    f.addEventListener('load', () => { try{ f.contentWindow.focus(); }catch(e){} });
+    f.srcdoc = shell;
+    document.body.appendChild(f);
+    window.__utExit = () => { if(document.fullscreenElement) try{ document.exitFullscreen(); }catch(e){} f.remove(); };
+    window.__utFullscreen = () => {
+      if(document.fullscreenElement){ document.exitFullscreen(); return; }
+      const req = f.requestFullscreen || f.webkitRequestFullscreen;
+      if(req){ const p = req.call(f); if(p && p.catch) p.catch(() => { try{ f.contentWindow.__utFsFailed(); }catch(e){} }); }
+      else { try{ f.contentWindow.__utFsFailed(); }catch(e){} }
+    };
+    document.addEventListener('fullscreenchange', () => {
+      try{ f.contentWindow.__utFsChanged(document.fullscreenElement === f); }catch(e){}
+    });
+  }catch(err){
+    msg.textContent = 'Could not start: ' + err.message;
+  }
+}
+document.getElementById('play').addEventListener('click', launch);
+document.addEventListener('keydown', e => { if((e.key==='z'||e.key==='Z'||e.key==='Enter') && !document.getElementById('gameframe')){ e.preventDefault(); launch(); } });
+</script>
+
+<!-- The player shell. It is written into the about:blank window by launch(). -->
+<script type="text/plain" id="shell-src">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>UNDERTALE</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+<style>
+  :root{--barh:40px}
+  html,body{margin:0;height:100%;background:#000;color:#fff;font-family:'Determination Mono','DTM-Mono','DotGothic16','Courier New',monospace;-webkit-font-smoothing:none;overflow:hidden}
+  #app{height:100%;display:flex;flex-direction:column;position:relative}
+  #bar{height:var(--barh);box-sizing:border-box;display:flex;gap:6px;align-items:center;padding:0 8px;background:#111;border-bottom:1px solid #333;font-size:13px;flex:0 0 auto;z-index:5;transition:opacity .25s}
+  #bar button,#bar select{background:#222;color:#fff;border:1px solid #555;padding:4px 9px;font:inherit;cursor:pointer;height:26px}
+  #bar button:hover,#bar select:hover{border-color:#ff0}
+  #bar .sp{flex:1}
+  #bar .hint{color:#777;font-size:11px}
+  #wrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+  #stage{position:relative;aspect-ratio:4/3;width:min(100vw,calc((100vh - var(--barh)) * 4 / 3));background:#000;container-type:size;overflow:hidden}
+  #frame{width:100%;height:100%;border:0;display:block;background:#000}
+  #paused{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-size:9cqw;letter-spacing:1cqw;color:#fff;background:rgba(0,0,0,.35);pointer-events:none;z-index:2}
+  #toast{position:absolute;left:2cqw;top:2cqw;font-size:3cqw;color:#ff0;background:rgba(0,0,0,.7);padding:.5cqw 1.5cqw;display:none;z-index:4;pointer-events:none}
+  #noruntime{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:6cqw;font-size:2.6cqw;line-height:1.5;color:#ccc;z-index:1}
+  #noruntime b{color:#ff0}
+  /* fullscreen: bar floats and auto-hides */
+  .fs{--barh:0px}
+  .fs #bar{position:absolute;top:0;left:0;right:0;height:40px;opacity:0;pointer-events:none}
+  .fs.showbar #bar{opacity:1;pointer-events:auto}
+  /* admin menu */
+  #admin{position:absolute;inset:0;display:none;background:#000;z-index:6;align-items:center;justify-content:center}
+  #box{width:80cqw;border:.9cqw solid #fff;padding:3cqw 4cqw;box-sizing:border-box;font-size:4cqw;line-height:1.55;text-transform:uppercase}
+  #box .title{text-align:center;margin-bottom:2cqw;letter-spacing:.6cqw}
+  #box .row{display:flex;justify-content:space-between;padding-left:5cqw;position:relative;white-space:nowrap}
+  #box .row.sel::before{content:"\2665";color:#f00;position:absolute;left:0}
+  #box .row.sel{color:#ff0}
+  #box .val.chg{color:#0f0}
+  #box .row.sel .val.chg{color:#ff0}
+  #box .val.edit{background:#fff;color:#000;padding:0 1cqw}
+  #box .foot{margin-top:2.4cqw;font-size:2.5cqw;color:#aaa;text-align:center;line-height:1.4}
+  #box .note{margin-top:1.6cqw;font-size:2.8cqw;color:#f55;text-align:center;min-height:3.6cqw}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="bar">
+    <button id="bPause" title="Pause (P)">&#10074;&#10074; Pause</button>
+    <button id="bSlow" title="Slower ([)">&laquo;</button>
+    <select id="selSpeed" title="Speed"></select>
+    <button id="bFast" title="Faster (])">&raquo;</button>
+    <button id="bMute" title="Mute">&#128266;</button>
+    <button id="bAdmin" title="Admin config (M)">Admin (M)</button>
+    <span class="sp"></span>
+    <span class="hint">P pause &middot; [ ] speed &middot; F fullscreen &middot; M admin</span>
+    <button id="bFull" title="Fullscreen (F)">&#9974; Fullscreen</button>
+    <button id="bExit" title="Exit">&#10005; Exit</button>
+  </div>
+  <div id="wrap">
+    <div id="stage">
+      <iframe id="frame" allow="autoplay; fullscreen; gamepad"></iframe>
+      <div id="noruntime"></div>
+      <div id="paused">PAUSED</div>
+      <div id="toast"></div>
+      <div id="admin"><div id="box"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var CFG = /*__CONFIG__*/null;
+
+/* ======================================================================
+   Time / audio / input control injected into the game page.
+   This function is stringified and run INSIDE the game iframe, before the
+   game's own scripts, so it must not reference anything outside itself.
+   ====================================================================== */
+function prelude(){
+  var S = window.__shell = {speed:1, paused:false, blocked:false, muted:false};
+  var rNow = performance.now.bind(performance), rDate = Date.now.bind(Date);
+  var rRAF = window.requestAnimationFrame.bind(window), rST = window.setTimeout.bind(window);
+  var rAEL = EventTarget.prototype.addEventListener, rREL = EventTarget.prototype.removeEventListener;
+
+  /* virtual clock: stops when paused, scales with speed */
+  var t0 = rNow(), d0 = rDate(), vt = 0, last = t0, ov = null;
+  function adv(){
+    if(ov !== null) return ov;
+    var n = rNow();
+    if(!S.paused) vt += (n - last) * S.speed;
+    last = n;
+    return vt;
+  }
+  performance.now = function(){ return t0 + adv(); };
+  Date.now = function(){ return d0 + adv(); };
+
+  /* virtual timers */
+  var timers = [], nid = 1;
+  function addT(fn, d, args, rep){
+    if(typeof fn !== 'function'){ var code = String(fn); fn = function(){ (0,eval)(code); }; }
+    d = Math.max(0, +d || 0);
+    var id = nid++;
+    timers.push({id:id, fn:fn, due:adv()+d, iv:rep ? Math.max(d,1) : 0, args:args});
+    return id;
+  }
+  window.setTimeout  = function(fn,d){ return addT(fn,d,[].slice.call(arguments,2),false); };
+  window.setInterval = function(fn,d){ return addT(fn,d,[].slice.call(arguments,2),true); };
+  window.clearTimeout = window.clearInterval = function(id){
+    for(var i=0;i<timers.length;i++) if(timers[i].id === id){ timers.splice(i,1); break; }
+  };
+  function pump(){
+    if(!S.paused){
+      var now = adv(), guard = 0;
+      for(;;){
+        var k=-1, m=Infinity;
+        for(var i=0;i<timers.length;i++) if(timers[i].due <= now && timers[i].due < m){ m = timers[i].due; k = i; }
+        if(k < 0 || guard++ > 2000) break;
+        var t = timers[k];
+        if(t.iv){ t.due += t.iv; if(t.due < now - t.iv*10) t.due = now + t.iv; }
+        else timers.splice(k,1);
+        try{ t.fn.apply(window, t.args); }catch(e){ console.error(e); }
+      }
+    }
+    rST(pump, 2);
+  }
+  pump();
+
+  /* requestAnimationFrame: held while paused, run several passes per frame when sped up */
+  var rafQ = [], rid = 1, prevV = 0;
+  window.requestAnimationFrame = function(cb){ var id = rid++; rafQ.push({id:id, cb:cb}); return id; };
+  window.cancelAnimationFrame = function(id){ rafQ = rafQ.filter(function(x){ return x.id !== id; }); };
+  function frame(){
+    if(S.paused){ adv(); prevV = vt; }
+    else{
+      var end = adv(), start = prevV;
+      var P = S.speed > 1 ? Math.min(Math.round(S.speed), 8) : 1;
+      for(var p=1; p<=P; p++){
+        ov = start + (end - start) * p / P;
+        var q = rafQ; rafQ = [];
+        var ts = t0 + ov;
+        for(var j=0;j<q.length;j++){ try{ q[j].cb(ts); }catch(e){ console.error(e); } }
+      }
+      ov = null; prevV = end;
+    }
+    rRAF(frame);
+  }
+  rRAF(frame);
+
+  /* audio: pause, speed, mute */
+  var ctxs = [], srcs = [], medias = [];
+  function mkCtx(name){
+    var O = window[name]; if(!O) return;
+    var W = class extends O{
+      constructor(){ super(...arguments); ctxs.push(this); if(S.paused) try{ this.suspend(); }catch(e){} }
+      resume(){ return S.paused ? Promise.resolve() : super.resume(); }
+    };
+    window[name] = W;
+  }
+  mkCtx('AudioContext'); if(window.webkitAudioContext && window.webkitAudioContext !== window.AudioContext) mkCtx('webkitAudioContext');
+  var oc = AudioNode.prototype.connect;
+  function master(c){
+    if(!c.__m){ var g = c.createGain(); g.gain.value = S.muted ? 0 : 1; oc.call(g, c.destination); c.__m = g; }
+    return c.__m;
+  }
+  AudioNode.prototype.connect = function(d){
+    var a = [].slice.call(arguments);
+    if(window.AudioDestinationNode && d instanceof AudioDestinationNode && this.context && this !== this.context.__m) a[0] = master(this.context);
+    return oc.apply(this, a);
+  };
+  if(window.AudioBufferSourceNode){
+    var st = AudioBufferSourceNode.prototype.start;
+    AudioBufferSourceNode.prototype.start = function(){
+      this.__base = this.playbackRate.value; srcs.push(this);
+      this.playbackRate.value = this.__base * S.speed;
+      var self = this;
+      rAEL.call(this, 'ended', function(){ var i = srcs.indexOf(self); if(i >= 0) srcs.splice(i,1); });
+      return st.apply(this, arguments);
+    };
+  }
+  var mp = HTMLMediaElement.prototype.play;
+  HTMLMediaElement.prototype.play = function(){
+    if(medias.indexOf(this) < 0) medias.push(this);
+    this.playbackRate = S.speed; this.muted = S.muted;
+    return mp.apply(this, arguments);
+  };
+  function applyAudio(){
+    ctxs.forEach(function(c){
+      try{ if(S.paused){ if(c.state === 'running') c.suspend(); } else if(c.state === 'suspended') c.resume(); }catch(e){}
+      if(c.__m) c.__m.gain.value = S.muted ? 0 : 1;
+    });
+    srcs.forEach(function(s){ try{ s.playbackRate.value = s.__base * S.speed; }catch(e){} });
+    medias.forEach(function(m){
+      try{
+        m.playbackRate = S.speed; m.muted = S.muted;
+        if(S.paused && !m.paused){ m.__wp = true; m.pause(); }
+        else if(!S.paused && m.__wp){ m.__wp = false; mp.call(m); }
+      }catch(e){}
+    });
+  }
+  S.apply = applyAudio;
+
+  /* input: block keys while the admin menu is open; forward shell hotkeys to the parent window */
+  var KEYS = {keydown:1, keyup:1, keypress:1};
+  rAEL.call(window, 'keydown', function(e){
+    if(e.ctrlKey || e.metaKey || e.altKey) return;
+    try{
+      if(parent && parent.__shellKey && parent.__shellKey(e)){ e.preventDefault(); e.stopImmediatePropagation(); }
+    }catch(err){}
+  }, true);
+  EventTarget.prototype.addEventListener = function(t, fn, o){
+    if(KEYS[t] && typeof fn === 'function'){
+      if(!fn.__w) try{ fn.__w = function(e){ if(S.blocked) return; return fn.call(this, e); }; }catch(e){}
+      if(fn.__w) fn = fn.__w;
+    }
+    return rAEL.call(this, t, fn, o);
+  };
+  EventTarget.prototype.removeEventListener = function(t, fn, o){
+    if(KEYS[t] && fn && fn.__w) fn = fn.__w;
+    return rREL.call(this, t, fn, o);
+  };
+}
+
+/* ====================== file0 helpers ====================== */
+/* line numbers are 1-based, as in the community docs for the save format */
+var LINE_ROOM = 548;
+var INV_LINES = [13,15,17,19,21,23,25,27];
+var MAX_ITEM = 64, MAX_ROOM = 999;
+var ITEMS = {0:'(empty)',1:'Monster Candy',2:'Croquet Roll',3:'Stick',4:'Bandage',5:'Rock Candy',6:'Pumpkin Rings',7:'Spider Donut',8:'Stoic Onion',9:'Ghost Fruit',10:'Spider Cider',11:'Butterscotch Pie',12:'Faded Ribbon',13:'Toy Knife',14:'Tough Glove',15:'Manly Bandanna',16:'Snowman Piece',17:'Nice Cream',18:'Puppydough Icecream',19:'Bisicle',20:'Unisicle',32:'Dog Residue'};
+var ROOM_NAMES = {}; /* optional: add  231:'some room'  entries here */
+function itemName(n){ return ITEMS[n] !== undefined ? ITEMS[n] : 'Item #' + n; }
+function roomName(n){ return ROOM_NAMES[n] ? ' - ' + ROOM_NAMES[n] : ''; }
+
+function parseSave(text){
+  var eol = text.indexOf('\r\n') >= 0 ? '\r\n' : '\n';
+  return {eol:eol, lines:text.replace(/\r\n/g,'\n').split('\n')};
+}
+function loadSaveText(){
+  var t = null;
+  try{ t = localStorage.getItem(CFG.saveKey); }catch(e){}
+  return t || CFG.defaultFile0;
+}
+function getNum(lines, ln){ var v = parseInt(lines[ln-1], 10); return isNaN(v) ? 0 : v; }
+
+/* ====================== shell UI ====================== */
+var $ = function(id){ return document.getElementById(id); };
+var frame = $('frame'), app = $('app'), toastEl = $('toast');
+var SPEEDS = [0.25,0.5,1,1.5,2,3,4];
+var state = {paused:false, speed:1, muted:false, runtime:false};
+
+function toast(t, ms){
+  toastEl.textContent = t; toastEl.style.display = 'block';
+  clearTimeout(toast.t); toast.t = setTimeout(function(){ toastEl.style.display = 'none'; }, ms || 1300);
+}
+function gameShell(){ try{ return frame.contentWindow && frame.contentWindow.__shell; }catch(e){ return null; } }
+function pushState(){
+  var g = gameShell();
+  if(g){ g.paused = state.paused; g.speed = state.speed; g.muted = state.muted; g.blocked = A.open; if(g.apply) g.apply(); }
+  $('bPause').innerHTML = state.paused ? '&#9654; Resume' : '&#10074;&#10074; Pause';
+  $('bMute').innerHTML = state.muted ? '&#128263;' : '&#128266;';
+  $('paused').style.display = (state.paused && !A.open) ? 'flex' : 'none';
+  $('selSpeed').value = String(state.speed);
+}
+function setPaused(v){ state.paused = v; pushState(); }
+function togglePause(){ setPaused(!state.paused); toast(state.paused ? 'PAUSED' : 'RESUMED'); }
+function setSpeed(v){ state.speed = v; pushState(); toast('SPEED x' + v); }
+function stepSpeed(d){
+  var i = SPEEDS.indexOf(state.speed); if(i < 0) i = 2;
+  i = Math.max(0, Math.min(SPEEDS.length-1, i + d)); setSpeed(SPEEDS[i]);
+}
+function toggleMute(){ state.muted = !state.muted; pushState(); toast(state.muted ? 'MUTED' : 'SOUND ON'); }
+function toggleFS(){
+  try{ if(parent !== window && parent.__utFullscreen){ parent.__utFullscreen(); return; } }catch(e){}
+  if(document.fullscreenElement) document.exitFullscreen();
+  else (app.requestFullscreen || app.webkitRequestFullscreen).call(app);
+}
+window.__utFsChanged = function(on){ app.classList.toggle('fs', on); if(!on) app.classList.remove('showbar'); };
+window.__utFsFailed = function(){ toast('FULLSCREEN IS BLOCKED BY THIS SITE. PRESS F11 FOR BROWSER FULLSCREEN.', 5000); };
+function focusGame(){ try{ frame.focus(); frame.contentWindow.focus(); }catch(e){} }
+
+SPEEDS.forEach(function(s){ var o = document.createElement('option'); o.value = String(s); o.textContent = 'x' + s; $('selSpeed').appendChild(o); });
+$('selSpeed').value = '1';
+$('selSpeed').addEventListener('change', function(){ setSpeed(parseFloat(this.value)); this.blur(); focusGame(); });
+$('bPause').addEventListener('click', function(){ togglePause(); focusGame(); });
+$('bSlow').addEventListener('click', function(){ stepSpeed(-1); focusGame(); });
+$('bFast').addEventListener('click', function(){ stepSpeed(1); focusGame(); });
+$('bMute').addEventListener('click', function(){ toggleMute(); focusGame(); });
+$('bFull').addEventListener('click', function(){ toggleFS(); });
+$('bAdmin').addEventListener('click', function(){ openAdmin(); });
+$('bExit').addEventListener('click', function(){ try{ if(parent !== window && parent.__utExit) parent.__utExit(); else window.close(); }catch(e){} });
+document.addEventListener('fullscreenchange', function(){ window.__utFsChanged(!!document.fullscreenElement); });
+document.addEventListener('mousemove', function(){
+  if(!app.classList.contains('fs')) return;
+  app.classList.add('showbar'); clearTimeout(document.__bt);
+  document.__bt = setTimeout(function(){ app.classList.remove('showbar'); }, 2000);
+});
+
+/* ====================== admin menu ====================== */
+var A = {open:false, screen:'main', row:0, edit:null, draft:null, saved:null, eol:'\r\n', note:'', closing:false, wasPaused:false};
+
+function isDirty(){ return A.draft.join('\n') !== A.saved.join('\n'); }
+function openAdmin(){
+  var p = parseSave(loadSaveText());
+  A.eol = p.eol; A.draft = p.lines.slice(); A.saved = p.lines.slice();
+  A.screen = 'main'; A.row = 0; A.edit = null; A.closing = false;
+  A.note = p.lines.length < 549 ? 'WARNING: SAVE LOOKS TOO SHORT' : '';
+  A.wasPaused = state.paused; A.open = true;
+  state.paused = true; pushState();
+  try{ document.activeElement.blur(); window.focus(); }catch(e){}
+  $('admin').style.display = 'flex'; renderAdmin();
+}
+function closeAdmin(){
+  A.open = false; $('admin').style.display = 'none';
+  state.paused = A.wasPaused; pushState(); focusGame();
+}
+function doSave(){
+  var text = A.draft.join(A.eol);
+  try{ localStorage.setItem(CFG.saveKey, text); }catch(e){ A.note = 'COULD NOT STORE SAVE'; return; }
+  try{ var w = frame.contentWindow; if(w && w.__utWriteFile) w.__utWriteFile('file0', text); }catch(e){}
+  A.saved = A.draft.slice(); A.note = 'SAVED.';
+}
+function doDiscard(){ A.draft = A.saved.slice(); A.note = 'NOT SAVED. CHANGES DISCARDED.'; }
+function afterChoice(){ if(A.closing){ closeAdmin(); return true; } return false; }
+
+function startEdit(kind, idx){
+  var ln = kind === 'room' ? LINE_ROOM : INV_LINES[idx];
+  var v = getNum(A.draft, ln);
+  A.edit = {kind:kind, ln:ln, value:v, max: kind === 'room' ? MAX_ROOM : MAX_ITEM};
+}
+function adminKey(e, k){
+  var key = k.length === 1 ? k.toLowerCase() : k;
+  if(e.repeat && key !== 'ArrowUp' && key !== 'ArrowDown' && key !== 'ArrowLeft' && key !== 'ArrowRight') return;
+  if(key === 'm'){
+    if(isDirty()){
+      A.screen = 'main'; A.row = 2; A.edit = null; A.closing = true;
+      A.note = 'UNSAVED CHANGES! Z = SAVE   X = DON\'T SAVE';
+    } else { closeAdmin(); return; }
+  }
+  else if(A.edit){
+    var ed = A.edit;
+    if(key === 'ArrowUp') ed.value = Math.min(ed.max, ed.value + 1);
+    else if(key === 'ArrowDown') ed.value = Math.max(0, ed.value - 1);
+    else if(key === 'ArrowRight') ed.value = Math.min(ed.max, ed.value + 10);
+    else if(key === 'ArrowLeft') ed.value = Math.max(0, ed.value - 10);
+    else if(key === 'z' || key === 'Enter'){ A.draft[ed.ln-1] = String(ed.value); A.edit = null; A.note = ''; }
+    else if(key === 'x'){ A.edit = null; }
+  }
+  else{
+    var n = A.screen === 'main' ? 3 : 8;
+    if(key === 'ArrowUp'){ A.row = (A.row + n - 1) % n; A.closing = false; A.note = ''; }
+    else if(key === 'ArrowDown'){ A.row = (A.row + 1) % n; A.closing = false; A.note = ''; }
+    else if(key === 'z' || key === 'Enter'){
+      if(A.screen === 'main'){
+        if(A.row === 0) startEdit('room', 0);
+        else if(A.row === 1){ A.screen = 'inv'; A.row = 0; A.note = ''; }
+        else { doSave(); if(afterChoice()) return; }
+      } else startEdit('item', A.row);
+    }
+    else if(key === 'x'){
+      if(A.screen === 'inv'){ A.screen = 'main'; A.row = 1; }
+      else if(A.row === 2){ doDiscard(); if(afterChoice()) return; }
+    }
+  }
+  renderAdmin();
+}
+function renderAdmin(){
+  var h = '', saved = A.saved;
+  function val(ln, text, isEditing){
+    var chg = A.draft[ln-1] !== saved[ln-1];
+    if(isEditing) return '<span class="val edit">&lt; ' + text + ' &gt;</span>';
+    return '<span class="val' + (chg ? ' chg' : '') + '">' + text + '</span>';
+  }
+  function row(sel, label, v){ return '<div class="row' + (sel ? ' sel' : '') + '"><span>' + label + '</span>' + v + '</div>'; }
+  var foot;
+  if(A.screen === 'main'){
+    h += '<div class="title">* ADMIN CONFIG *</div>';
+    var ed = A.edit && A.edit.kind === 'room';
+    var rv = ed ? A.edit.value : getNum(A.draft, LINE_ROOM);
+    h += row(A.row === 0, 'LOCATION', val(LINE_ROOM, 'ROOM ' + rv + roomName(rv), ed));
+    h += row(A.row === 1, 'INVENTORY', '<span class="val">8 SLOTS</span>');
+    h += row(A.row === 2, 'SAVE', '<span class="val">' + (isDirty() ? 'UNSAVED' : 'SAVED') + '</span>');
+    foot = A.edit ? '&uarr;&darr; +/-1 &nbsp; &larr;&rarr; +/-10 &nbsp; Z OK &nbsp; X CANCEL'
+         : A.row === 2 ? 'Z = SAVE &nbsp;&nbsp; X = DON\'T SAVE &nbsp;&nbsp; M = CLOSE'
+         : '&uarr;&darr; MOVE &nbsp; Z SELECT &nbsp; M CLOSE (SAVE FIRST)';
+  } else {
+    h += '<div class="title">* INVENTORY *</div>';
+    for(var i=0;i<8;i++){
+      var ln = INV_LINES[i], isEd = A.edit && A.edit.kind === 'item' && A.row === i;
+      var v = isEd ? A.edit.value : getNum(A.draft, ln);
+      h += row(A.row === i, 'SLOT ' + (i+1), val(ln, v + ' ' + itemName(v), isEd));
+    }
+    foot = A.edit ? '&uarr;&darr; +/-1 &nbsp; &larr;&rarr; +/-10 &nbsp; Z OK &nbsp; X CANCEL'
+         : '&uarr;&darr; MOVE &nbsp; Z CHANGE &nbsp; X BACK';
+  }
+  h += '<div class="note">' + A.note.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</div>';
+  h += '<div class="foot">' + foot + '</div>';
+  $('box').innerHTML = h;
+}
+
+/* ====================== global keys ====================== */
+function handleKey(e){
+  if(e.ctrlKey || e.metaKey || e.altKey) return false;
+  var k = e.key, low = k.length === 1 ? k.toLowerCase() : k;
+  if(A.open){ adminKey(e, k); return true; }
+  var hot = (low === 'm' || low === 'p' || low === 'f' || low === '[' || low === ']');
+  if(!hot) return false;
+  if(e.repeat) return true;
+  if(low === 'm') openAdmin();
+  else if(low === 'p') togglePause();
+  else if(low === 'f') toggleFS();
+  else stepSpeed(low === '[' ? -1 : 1);
+  return true;
+}
+window.__shellKey = handleKey;
+document.addEventListener('keydown', function(e){ if(handleKey(e)) e.preventDefault(); }, true);
+
+/* ====================== load the game runtime ====================== */
+function showNoRuntime(err){
+  var n = $('noruntime');
+  n.innerHTML = 'No game runtime found at<br><b></b><br><br>Put a browser build of the game there and reload.<br>' +
+    'The admin menu (M) and the controls still work and edit your save.';
+  n.getElementsByTagName('b')[0].textContent = CFG.runtimeUrl;
+  n.style.display = 'flex';
+}
+function loadRuntime(){
+  fetch(CFG.runtimeUrl, {cache:'no-cache'}).then(function(r){
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    return r.text();
+  }).then(function(html){
+    var inject = '<base href="' + CFG.runtimeUrl + '"><script>(' + prelude.toString() + ')();<' + '/script>';
+    html = /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, function(m){ return m + inject; }) : inject + html;
+    frame.addEventListener('load', function(){ state.runtime = true; pushState(); focusGame(); }, {once:true});
+    frame.srcdoc = html;
+  }).catch(function(err){ showNoRuntime(err); });
+}
+pushState();
+loadRuntime();
+})();
+<\/script>
+</body>
+</html>
+</script>
+</body>
+</html>
